@@ -1,4 +1,4 @@
-DOCKER = docker
+DOCKER = podman
 IMAGE = kylemanna/aosp
 
 aosp: Dockerfile
