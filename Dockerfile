@@ -19,8 +19,8 @@ RUN apt-get update && \
         pngcrush schedtool xsltproc zip zlib1g-dev graphviz && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD https://commondatastorage.googleapis.com/git-repo-downloads/repo /usr/local/bin/
-RUN chmod 755 /usr/local/bin/*
+ADD https://storage.googleapis.com/git-repo-downloads/repo /usr/local/bin/
+RUN chmod a+x /usr/local/bin/repo
 
 # Install latest version of JDK
 # See http://source.android.com/source/initializing.html#setting-up-a-linux-build-environment
