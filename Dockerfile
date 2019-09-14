@@ -20,7 +20,8 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD https://storage.googleapis.com/git-repo-downloads/repo /usr/local/bin/
-RUN chmod a+x /usr/local/bin/repo
+
+RUN chmod 755 /usr/local/bin/repo
 
 # Install latest version of JDK
 # See http://source.android.com/source/initializing.html#setting-up-a-linux-build-environment
