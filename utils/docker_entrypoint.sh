@@ -14,8 +14,8 @@ set -e
 #
 
 # Reasonable defaults if no USER_ID/GROUP_ID environment variables are set.
-if [ -z ${USER_ID+x} ]; then USER_ID=1000; fi
-if [ -z ${GROUP_ID+x} ]; then GROUP_ID=1000; fi
+USER_ID=1000
+GROUP_ID=1000
 
 # ccache
 export CCACHE_DIR=/tmp/ccache
