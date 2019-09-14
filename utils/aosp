@@ -41,7 +41,7 @@ uid=$(id -u)
 
 # Set uid and gid to match host current user as long as NOT root
 if [ $uid -ne "0" ]; then
-    AOSP_HOST_ID_ARGS="-e USER_ID=$uid -e GROUP_ID=$(id -g) -e GROUP_NAME=$(id -g -n)"
+    AOSP_HOST_ID_ARGS="-e USER_ID=$uid -e GROUP_ID=$(id -g) -e GROUP_NAME=$(id -g -n) -e USER_NAME=$(id -u -n)"
 fi
 
 if [ -S "$SSH_AUTH_SOCK" ]; then
