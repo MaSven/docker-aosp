@@ -27,16 +27,16 @@ useradd -u $USER_ID  -r -m -g $GROUP_NAME $USER_NAME
 echo "$msg - done"
 
 msg="docker_entrypoint: Copying .gitconfig and .ssh/config to new user home" && echo $msg
-cp /root/.gitconfig /home/aosp/.gitconfig && \
-chown $USER_NAME:$GROUP_NAME /home/aosp/.gitconfig && \
-mkdir -p /home/aosp/.ssh && \
-cp /root/.ssh/config /home/aosp/.ssh/config && \
-chown $USER_NAME:$GROUP_NAME -R /home/aosp/.ssh &&
+cp /root/.gitconfig /home/$USER_NAME/.gitconfig && \
+chown $USER_NAME:$GROUP_NAME /home/$USER_NAME/.gitconfig && \
+mkdir -p /home/$USER_NAME/.ssh && \
+cp /root/.ssh/config /home/$USER_NAME/.ssh/config && \
+chown $USER_NAME:$GROUP_NAME -R /home/$USER_NAME/.ssh &&
 echo "$msg - done"
 
-msg="docker_entrypoint: Creating /tmp/ccache and /aosp directory" && echo $msg
-mkdir -p /tmp/ccache /aosp
-chown $USER_NAME:$GROUP_NAME /tmp/ccache /aosp
+msg="docker_entrypoint: Creating /tmp/ccache and /$USER_NAME directory" && echo $msg
+mkdir -p /tmp/ccache /$USER_NAME
+chown $USER_NAME:$GROUP_NAME /tmp/ccache /$USER_NAME
 echo "$msg - done"
 
 echo ""
@@ -47,6 +47,6 @@ if [ -z "$args" ]; then
   args="bash"
 fi
 
-# Execute command as `aosp` user
+# Execute command as `$USER_NAME` user
 export HOME=/home/$USER_NAME
 exec sudo -E -u $USER_NAME $args
