@@ -22,8 +22,8 @@ export CCACHE_DIR=/tmp/ccache
 export USE_CCACHE=1
 
 msg="docker_entrypoint: Creating user UID/GID [$USER_ID/$GROUP_ID]" && echo $msg
-groupadd  -r aosp && \
-useradd   -r -m -g aosp aosp
+groupadd -g $GROUP_ID -r aosp && \
+useradd -u $USER_ID  -r -m -g aosp aosp
 echo "$msg - done"
 
 msg="docker_entrypoint: Copying .gitconfig and .ssh/config to new user home" && echo $msg
